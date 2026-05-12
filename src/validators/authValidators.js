@@ -4,40 +4,40 @@ const registerValidators = [
   body('name')
     .trim()
     .notEmpty()
-    .withMessage('Name is required'),
+    .withMessage('El nombre es requerido'),
 
   body('lastname')
     .trim()
     .notEmpty()
-    .withMessage('Lastname is required'),
+    .withMessage('El apellido es requerido'),
 
   body('email')
     .trim()
     .notEmpty()
-    .withMessage('Email is required')
+    .withMessage('El email es requerido')
     .isEmail()
-    .withMessage('Must be a valid email')
+    .withMessage('Debe ser un email válido')
     .normalizeEmail(),
 
   body('password')
     .notEmpty()
-    .withMessage('Password is required')
+    .withMessage('La contraseña es requerida')
     .isLength({ min: 6 })
-    .withMessage('Password must be at least 6 characters'),
+    .withMessage('La contraseña debe tener al menos 6 caracteres'),
 ];
 
 const loginValidators = [
   body('email')
     .trim()
     .notEmpty()
-    .withMessage('Email is required')
+    .withMessage('El email es requerido')
     .isEmail()
-    .withMessage('Must be a valid email')
+    .withMessage('Debe ser un email válido')
     .normalizeEmail(),
 
   body('password')
     .notEmpty()
-    .withMessage('Password is required'),
+    .withMessage('La contraseña es requerida'),
 ];
 
 module.exports = { registerValidators, loginValidators };

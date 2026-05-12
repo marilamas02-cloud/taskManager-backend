@@ -4,7 +4,7 @@ const generateToken = require('../utils/generateToken');
 const registerUser = async ({ name, lastname, email, password }) => {
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    const error = new Error('Email already registered');
+    const error = new Error('El email ya está registrado');
     error.statusCode = 409;
     throw error;
   }
@@ -28,7 +28,7 @@ const loginUser = async ({ email, password }) => {
   const user = await User.findOne({ email }).select('+password');
 
   if (!user || !(await user.comparePassword(password))) {
-    const error = new Error('Invalid email or password');
+    const error = new Error('Email o contraseña incorrectos');
     error.statusCode = 401;
     throw error;
   }

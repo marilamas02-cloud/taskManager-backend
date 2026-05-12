@@ -5,7 +5,7 @@ const protect = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ success: false, message: 'Not authorized, no token' });
+    return res.status(401).json({ success: false, message: 'No autorizado, token no proporcionado' });
   }
 
   const token = authHeader.split(' ')[1];
@@ -15,12 +15,12 @@ const protect = async (req, res, next) => {
     req.user = await User.findById(decoded.id).select('-password');
 
     if (!req.user) {
-      return res.status(401).json({ success: false, message: 'User not found' });
+      return res.status(401).json({ success: false, message: 'Usuario no encontrado' });
     }
 
     next();
   } catch {
-    return res.status(401).json({ success: false, message: 'Not authorized, invalid token' });
+    return res.status(401).json({ success: false, message: 'No autorizado, token inválido' });
   }
 };
 
