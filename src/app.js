@@ -10,10 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
-  res.json({ success: true, message: 'Task Manager API is running' });
+  res.json({ success: true, message: 'API corriendo' });
 });
 
-app.use('/api', authRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
 app.use(notFound);
