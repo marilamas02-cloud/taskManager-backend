@@ -19,8 +19,9 @@ const protect = async (req, res, next) => {
     }
 
     next();
-  } catch {
-    return res.status(401).json({ success: false, message: 'No autorizado, token inválido' });
+  } catch (err) {
+    // JsonWebTokenError y TokenExpiredError son manejados por errorMiddleware
+    next(err);
   }
 };
 
