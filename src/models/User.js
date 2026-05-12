@@ -5,24 +5,24 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Name is required'],
+      required: [true, 'El nombre es requerido'],
       trim: true,
     },
     lastname: {
       type: String,
-      required: [true, 'Lastname is required'],
+      required: [true, 'El apellido es requerido'],
       trim: true,
     },
     email: {
       type: String,
-      required: [true, 'Email is required'],
+      required: [true, 'El email es requerido'],
       unique: true,
       lowercase: true,
       trim: true,
     },
     password: {
       type: String,
-      required: [true, 'Password is required'],
+      required: [true, 'La contraseña es requerida'],
       minlength: 6,
       select: false,
     },
